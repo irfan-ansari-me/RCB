@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>RCB</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="login_div" class="main-div">
+    <h3>RCB account Login</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="user_div" class="loggedin-div">
+    <h3 id="name">Welcome </h3>
+    <p id="user_para">Welcome to Alpha_X. You're currently logged in.</p>
+    
+    <h4>Click on any of news aggregator</h4>
+    <div id="poll">
+      <button onclick="dosomething()">Reuters</button>
+      <a href="value3/economic_times.html" style="text-decoration: none;color:black;padding:10px;border:1px solid red;border-radius: 5px;">ECONOMIC TIMES</a>
+    </div>
+    <br>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+
+
+  
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDVHURLUyN74kObCGo3LJFe2-WEvWCpkEo",
+    authDomain: "pichkari-login.firebaseapp.com",
+    databaseURL: "https://pichkari-login.firebaseio.com",
+    projectId: "pichkari-login",
+    storageBucket: "",
+    messagingSenderId: "124621417345"
+  };
+  firebase.initializeApp(config);
+</script>
+  <script src="index.js"></script>
+  <script>
+    function dosomething(){
+  alert("passing username");
+  var currentUser = firebase.auth().currentUser;
+  if (currentUser!=null) {
+  
+    var user = firebase.auth().currentUser;
+  
+   if(user != null){
+      var email_id = user.email;
+      localStorage.setItem("userName",email_id);
+      window.location.href = "value3/reuters.html";
+    }
+    }
+  }
+  </script>
+
+</body>
+</html>
